@@ -1,89 +1,31 @@
 {
-  "name": "pt-tech",
-  "version": "0.0.1",
-  "description": "The dating app feature for Project Tech in blok 3.",
-  "main": "server.js",
+  "name": "progressive-web-apps-1920",
+  "version": "1.0.0",
+  "description": "Find your perfect player2 with this app! ",
+  "main": "src/server.js",
   "scripts": {
-    "eslint": "node_modules/.bin/eslint server.js controllers/*.js utils/*.js public/scripts/*.js",
-    "stylelint": "node_modules/.bin/stylelint public/css/*.css",
-    "lint": "npm run eslint && npm run stylelint",
-    "prestart": "npm run lint",
-    "start": "nodemon server.js",
-    "mongoStart": "mongod -f mongod.conf"
+    "prestart": "link-module-alias",
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iSirThijs/pt-tech.git"
+    "url": "git+https://github.com/iSirThijs/progressive-web-apps-1920.git"
   },
   "author": "Thijs Spijker",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iSirThijs/pt-tech/issues"
+    "url": "https://github.com/iSirThijs/progressive-web-apps-1920/issues"
   },
-  "homepage": "https://github.com/iSirThijs/pt-tech#readme",
-  "devDependencies": {
-    "eslint": "^5.15.1",
-    "nodemon": "^1.18.10",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0"
-  },
+  "homepage": "https://github.com/iSirThijs/progressive-web-apps-1920#readme",
   "dependencies": {
-    "apicalypse": "^0.1.3",
-    "argon2": "^0.21.0",
-    "body-parser": "^1.18.3",
-    "dotenv": "^7.0.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.4.20"
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "link-module-alias": "^1.2.0"
   },
-  "nodemonConfig": {
-    "ignore": ["/public/scripts/*.js"]
-  },
-  "eslintIgnore": [
-    "*.ejs",
-    "node_modules/"
-  ],
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "commonjs": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-      "ecmaVersion": 2018
-    },
-    "rules": {
-      "indent": [
-        "error",
-        "tab"
-      ],
-      "linebreak-style": [
-        "error",
-        "unix"
-      ],
-      "quotes": [
-        "error",
-        "single"
-      ],
-      "semi": [
-        "error",
-        "always"
-      ]
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "indentation": "tab",
-      "number-leading-zero": "never",
-      "no-descending-specificity": null
-    }
+  "devDependencies": {
+    "eslint": "^6.8.0"
   }
 }

@@ -54,7 +54,7 @@ This is my assignment from the subject 'Progressive Web Apps' in the minor [Webd
 	```
 
 # License
-See [License](https://github.com/iSirThijs/pt-tech/blob/master/LICENSE) for more info.
+See [License](https://github.com/iSirThijs/progressive-web-apps-1920/blob/master/LICENSE) for more info.
 
 **Additional note for HvA students:**
 
