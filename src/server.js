@@ -4,12 +4,16 @@ const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
 
+// Routers
+const register = require('#routers/register.js');
+
 server
 	.use('/static', express.static('./public'))
 	.use(bodyParser.urlencoded({ extended: true}))
 	.set('view engine', 'ejs')
-	.set('views', './src/views' )
+	.set('views', './src/views')
 	.get('/', (req, res) => res.render('other/home.ejs'))
+	.use('/register', register)
 	.use((req, res) => res.status(404).render('other/notfound.ejs'))
 	.use((err, req, res) => res.status(500).render('other/error.ejs'))
 	.listen(process.env.PORT || 8000);

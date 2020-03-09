@@ -23,9 +23,15 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "link-module-alias": "^1.2.0"
+    "link-module-alias": "^1.2.0",
+    "mongoose": "^5.9.3"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
+  },
+  "_moduleAliases": {
+    "#routers": "src/routers",
+    "#controllers": "src/controllers",
+    "#models": "src/models"
   }
 }
