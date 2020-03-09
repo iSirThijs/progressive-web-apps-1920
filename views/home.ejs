@@ -1,0 +1,26 @@
+<% include ./partials/head.ejs %>
+<title>Home</title>
+</head>
+<body class="no-js">
+	<header>
+		<% include ./partials/header.ejs %>
+		<h1>Home<span>welcome</span></h1>
+	</header>
+	<main class="fade-in">
+		<section>
+			<!-- <header>
+				<h2>Find your Player 2</h2>
+			</header> -->
+			<p class="game">
+				Plumbers are red,<br>
+				hedgehogs are blue,<br>
+				press 'Start' to join<br>
+				and find your player two.
+			</p>
+			<img src="/static/images/player-two.png" alt="">
+			<a class="start" href="/account/register">Press to start</a>
+			<a class="continue" href="/login">Continue your quest</a>
+		</section>
+	</main>
+</body>
+</html>

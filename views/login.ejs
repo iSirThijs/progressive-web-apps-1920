@@ -1,0 +1,43 @@
+<% include ./partials/head.ejs %>
+<title>Login</title>
+</head>
+<body class="no-js">
+	<header>
+		<% include ./partials/header.ejs %>
+		<h1>Account<span>login</span></h1>
+	</header>
+	<main class="fade-in">
+		<% if (query) { %>
+			<section>
+				<header>
+					<h2>Login required</h2>
+				</header>
+				<p>You need to login to access this area</p>
+			</section>
+		<% } %>
+		<section id="login" class="user-input">
+			<header>
+				<h2>Load your game</h2>
+			</header>
+			<p>Login to continue your quest!</p>
+			<form class="" action="/login?<%= query %>" method="post">
+				<label for="username">Username</label>
+				<input type="text" name="username" value="">
+				<label for="password">Password</label>
+				<input type="password" name="password" value="">
+				<button type="submit" name="button">Inloggen</button>
+			</form>
+		</section>
+		<section>
+			<header>
+				<h2>New Quest</h2>
+			</header>
+			<p>Haven't started on your quest yet?</p>
+			<a class="start" href="/account/register">Press to start</a>
+		</section>
+	</main>
+	<% if (notification) { %>
+		<% include ./partials/notification.ejs %>
+	<% } %>
+</body>
+</html>
