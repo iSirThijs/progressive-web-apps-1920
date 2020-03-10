@@ -8,9 +8,9 @@ const userSchema = new Schema({
 	username: String,
 	email: String,
 	hash: String,
-	games: [{ type: Schema.Types.Number, ref: 'Game'}]
+	// games: [{ type: Schema.Types.Number, ref: 'game'}]
 });
 
-const User = mongoose.model('User', userSchema, 'users');
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;
