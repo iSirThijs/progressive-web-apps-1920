@@ -5,7 +5,11 @@
   "main": "src/server.js",
   "scripts": {
     "prestart": "link-module-alias",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "predebug": "link-module-alias",
+    "debug": "nodemon src/server.js",
+    "mongo:start": "mongod -f mongod.conf",
+    "mongo:stop": "mongo admin --eval \"db.shutdownServer()\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "link-module-alias": "^1.2.0",
+    "log4js": "^6.1.2",
     "mongoose": "^5.9.3"
   },
   "devDependencies": {
@@ -32,6 +37,7 @@
   "_moduleAliases": {
     "#routers": "src/routers",
     "#controllers": "src/controllers",
-    "#models": "src/models"
+    "#models": "src/models",
+    "#utilities": "src/utilities"
   }
 }
