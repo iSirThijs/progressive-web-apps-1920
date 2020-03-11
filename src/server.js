@@ -19,7 +19,7 @@ const expressLogger = log4js.connectLogger(
 
 //controllers 
 require('#controllers/database.js'); // opens up connection to db
-const { requireLogin, requireGuest } = require('#controllers/account.js')
+const { requireLogin, requireGuest } = require('#controllers/account.js');
 
 // Routers
 const register = require('#routers/register.js');
@@ -29,6 +29,7 @@ const account = require('#routers/account.js');
 process.on('error', (error) => logger.error(error));
 
 server
+	//settings
 	.use(expressLogger)
 	.use(session({
 		resave: false, // checked session docs, false is best option(for now)
@@ -40,10 +41,14 @@ server
 	.use(setLocalDefaults)
 	.set('view engine', 'ejs')
 	.set('views', './src/views')
+
+	// routes
 	.get('/', (req, res) => res.render('other/home.ejs'))
 	.use('/register', requireGuest, register)
 	.use('/login', requireGuest, login)
 	.use('/account', requireLogin, account)
+
+	// error/not found
 	.use((req, res) => res.status(404).render('other/notfound.ejs'))
 	.use((err, req, res) => res.status(500).render('other/error.ejs'))
 	.listen(process.env.PORT || 8000);

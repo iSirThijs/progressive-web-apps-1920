@@ -30,11 +30,10 @@ function loginUser(req, res){
 			}
 		})
 		.then((user) => {
-			logger.trace(user);
 			if(user) {
 				const { _id, firstName, lastName, username, email } = user;
 				req.session.user = { _id, firstName, lastName, username, email };
-				res.redirect(req.query.url || '/');
+				res.redirect(req.query.url || '/profile');
 			} else if(!res.locals.notification) {
 				res.locals.notification = {type: 'warning', content: `Wrong password for user ${username}`};
 				res.render('other/login.ejs');
