@@ -2,6 +2,7 @@
 const logger = require('log4js').getLogger('Controller - Account');
 const db = require('#controllers/database.js');
 const User = require('#models/user.js');
+const queryString = require('querystring');
 
 exports.create = function(newUserInfo) {
 	logger.trace('Registering new user');
@@ -66,5 +67,24 @@ exports.find = function(username){
 	} else {
 		logger.trace('DB not connected');
 		throw new Error('DB not connected');
+	}
+};
+
+exports.requireLogin = function(req, res, next) {
+	if (req.session.user) {
+		next();
+	} else {
+		const query = queryString.stringify({
+			url: req.originalUrl
+		});
+		res.status(403).redirect('/login?' + query);
+	}
+};
+
+exports.requireGuest = function(req, res, next) {
+	if (!req.session.user) {
+		next();
+	} else {
+		res.redirect('/');
 	}
 };

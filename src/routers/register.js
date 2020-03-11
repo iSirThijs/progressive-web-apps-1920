@@ -56,7 +56,11 @@ function hashPassword (req, res, next) {
 function registerNewUser(req, res) {
 	const newUserInfo = req.body;
 	account.create(newUserInfo)
-		.then(() => res.redirect('/'))
+		.then((user) => {
+			const { _id, firstName, lastName, username, email } = user;
+			req.session.user = { _id, firstName, lastName, username, email };
+			res.redirect('/');
+		})
 		.catch(() => {
 			res.locals.notification = {type: 'error'};
 			res.render('other/register.ejs');
