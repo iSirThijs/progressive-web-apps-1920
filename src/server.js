@@ -23,6 +23,7 @@ require('#controllers/database.js'); // opens up connection to db
 // Routers
 const register = require('#routers/register.js');
 const login = require('#routers/login.js');
+const account = require('#routers/account.js');
 
 process.on('error', (error) => logger.error(error));
 
@@ -41,6 +42,7 @@ server
 	.get('/', (req, res) => res.render('other/home.ejs'))
 	.use('/register', register)
 	.use('/login', login)
+	.use('/account', account)
 	.use((req, res) => res.status(404).render('other/notfound.ejs'))
 	.use((err, req, res) => res.status(500).render('other/error.ejs'))
 	.listen(process.env.PORT || 8000);
@@ -60,3 +62,4 @@ function setLocalDefaults(req, res, next){
 
 	next();
 }
+
