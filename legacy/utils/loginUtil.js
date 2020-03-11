@@ -7,7 +7,7 @@ const User = require('../models/user.js');
 
 exports.page = function(req, res) {
 	if(!req.session.user) {
-		const query = queryString.stringify(req.query); // express parses the query, but I dont want it to
+		const query = queryString.stringify(req.query); // express parses the query, but I don't want it to
 		res.locals.query = query;
 		res.render('login.ejs');
 	} else res.redirect('/profile');

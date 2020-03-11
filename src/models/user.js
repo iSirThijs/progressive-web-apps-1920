@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 // Define schema and model for mongoose
 const userSchema = new Schema({
-	firstname: String,
-	lastname: String,
+	firstName: String,
+	lastName: String,
 	username: String,
 	email: String,
 	hash: String,
