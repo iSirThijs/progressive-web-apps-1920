@@ -19,6 +19,7 @@ const expressLogger = log4js.connectLogger(
 
 //controllers 
 require('#controllers/database.js'); // opens up connection to db
+const { requireLogin, requireGuest } = require('#controllers/account.js')
 
 // Routers
 const register = require('#routers/register.js');
@@ -40,9 +41,9 @@ server
 	.set('view engine', 'ejs')
 	.set('views', './src/views')
 	.get('/', (req, res) => res.render('other/home.ejs'))
-	.use('/register', register)
-	.use('/login', login)
-	.use('/account', account)
+	.use('/register', requireGuest, register)
+	.use('/login', requireGuest, login)
+	.use('/account', requireLogin, account)
 	.use((req, res) => res.status(404).render('other/notfound.ejs'))
 	.use((err, req, res) => res.status(500).render('other/error.ejs'))
 	.listen(process.env.PORT || 8000);
