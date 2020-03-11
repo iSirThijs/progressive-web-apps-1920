@@ -1,9 +1,9 @@
-<% include ../partials/head.ejs %>
+<%- include('../partials/head.ejs') %>
 <title>Register</title>
 </head>
 <body class="no-js">
 	<header>
-		<% include ../partials/header.ejs %>
+		<%- include('../partials/header.ejs') %>
 		<h1>Account<span>register</span></h1>
 	</header>
 	<main class="fade-in">
@@ -12,23 +12,21 @@
 				<h2>Create your character</h2>
 			</header>
 			<p>Tell me! Who are you?</p>
-			<form class="" action="/account/register" method="post">
-				<label for="firstname">First name</label>
-				<input type="text" name="firstname" required value="">
-				<label for="lastname">Last name</label>
-				<input type="text" name="lastname" required value="">
+			<form class="" action="/register" method="post">
+				<label for="firstName">First name</label>
+				<input type="text" name="firstName" required value="">
+				<label for="lastName">Last name</label>
+				<input type="text" name="lastName" required value="">
 				<label for="username">Username</label>
 				<input type="text" name="username" required value="">
 				<label for="email">Email</label>
 				<input type="text" name="email" required value="">
 				<label for="password">Password</label>
 				<input type="password" name="password" required value="">
-				<button type="submit" name="signup">Sign Up</button>
+				<button type="submit" name="sign-up">Sign Up</button>
 			</form>
 		</section>
 	</main>
-	<% if (notification) { %>
-		<% include ../partials/notification.ejs %>
-	<% } %>
+	<%- include('../partials/tail.ejs') %>
 	</body>
 </html>

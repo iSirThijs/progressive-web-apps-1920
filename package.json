@@ -5,7 +5,11 @@
   "main": "src/server.js",
   "scripts": {
     "prestart": "link-module-alias",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "predebug": "link-module-alias",
+    "debug": "nodemon src/server.js",
+    "mongo:start": "mongod -f mongod.conf",
+    "mongo:stop": "mongo admin --eval \"db.shutdownServer()\""
   },
   "repository": {
     "type": "git",
@@ -18,14 +22,23 @@
   },
   "homepage": "https://github.com/iSirThijs/progressive-web-apps-1920#readme",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "link-module-alias": "^1.2.0"
+    "link-module-alias": "^1.2.0",
+    "log4js": "^6.1.2",
+    "mongoose": "^5.9.3"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
+  },
+  "_moduleAliases": {
+    "#routers": "src/routers",
+    "#controllers": "src/controllers",
+    "#models": "src/models",
+    "#utilities": "src/utilities"
   }
 }

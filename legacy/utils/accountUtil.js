@@ -17,8 +17,8 @@ exports.create = function (userInfo) {
 		db.on('error', (err) => reject(err));
 		db.once('open', async function () {
 			let newUser = new User({
-				firstname: userInfo.firstname,
-				lastname: userInfo.lastname,
+				firstName: userInfo.firstName,
+				lastName: userInfo.lastName,
 				username: userInfo.username,
 				email: userInfo.email,
 				hash: await argon2.hash(userInfo.password),

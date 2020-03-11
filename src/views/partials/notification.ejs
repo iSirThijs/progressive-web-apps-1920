@@ -1,0 +1,13 @@
+<section class=<%= notification.type %>>
+	<% if (notification.type === 'warning') { %>
+	<header>
+		<h2>Please check the following issues</h2>
+	</header>
+	<p><%= notification.content %></p>
+	<% } else { %>
+	<header>
+		<h2>Oops, something went wrong</h2>
+	</header>
+	<p>If the error continues, try again later</p>
+	<% } %>
+</section>
