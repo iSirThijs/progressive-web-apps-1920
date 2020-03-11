@@ -47,3 +47,24 @@ exports.exists  = function(field, newUserInfo) {
 		throw new Error('DB not connected');
 	}
 };
+
+exports.find = function(username){
+	logger.trace(`Searching for user ${username} in db`);
+	if(db.ready){
+		return User.findOne({username})
+			.then((user) => {
+				logger.trace('Result:');
+				logger.trace(user);
+
+				if(user) return user;
+				else return false;
+			})
+			.catch(error => {
+				logger.error(error);
+				throw error;
+			});
+	} else {
+		logger.trace('DB not connected');
+		throw new Error('DB not connected');
+	}
+};

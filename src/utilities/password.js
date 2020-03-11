@@ -18,11 +18,21 @@ exports.checkLength = function(password, min = 4, max = undefined) {
 // hash password
 exports.hash = function(password) {
 	logger.trace('Hashing password');
-	const saltrounds = 10;
-	return bcrypt.hash(password, saltrounds);
+	const salt = 10;
+	return bcrypt.hash(password, salt);
 };
 
 // compare hash password
-exports.compare = function(password, hash){
-	return bcrypt.compare(password, hash);
-}
+exports.compare = function(password, user){
+	return bcrypt.compare(password, user.hash)
+		.then((correct) => {
+			if(correct) {
+				logger.trace('Password correct');
+				return user;
+			}
+			else {
+				logger.trace('Password incorrect');
+				return false;
+			}
+		});
+};
