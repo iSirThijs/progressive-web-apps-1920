@@ -24,6 +24,18 @@ body {
 
 	/* resets user-agents stylesheet */
 	margin: 0;
+
+
+}
+
+@supports(padding: max(0px)) {
+	body {
+		padding-left: max(0, env(safe-area-inset-left));
+        padding-right: max(0, env(safe-area-inset-right));
+    }
+    header {
+		padding-top: env(safe-area-inset-top);
+	}
 }
 
 main {
