@@ -333,8 +333,8 @@ section > img {
 }
 
 /* Icons and Background images */
-.icon-trash { background-image: url('/static/icons/trash.png'); }
-.icon-plus { background-image: url('/static/icons/plus.svg'); }
+.icon-trash { background-image: url('/public/icons/trash.png'); }
+.icon-plus { background-image: url('/public/icons/plus.svg'); }
 
 .warning,
 .error,

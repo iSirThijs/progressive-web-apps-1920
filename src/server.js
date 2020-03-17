@@ -14,7 +14,7 @@ const expressLogger = log4js.connectLogger(
 	{ 
 		level: 'debug', 
 		format: ':method :url', 
-		nolog: '\\/static'
+		nolog: '\\/public'
 	});
 
 //controllers 
@@ -36,7 +36,7 @@ server
 		saveUninitialized: true,
 		secret: process.env.SESSION_SECRET
 	}))
-	.use('/static', express.static('./public'))
+	.use('/public', express.static('./public'))
 	.use(bodyParser.urlencoded({ extended: true}))
 	.use(setLocalDefaults)
 	.set('view engine', 'ejs')
