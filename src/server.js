@@ -6,51 +6,60 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 // Utilities
-require('#utilities/logger.js'); // setup logger
+require('#utilities/logger.js');
 const log4js = require('log4js');
 const logger = log4js.getLogger('server');
-const expressLogger = log4js.connectLogger(
-	logger, 
-	{ 
-		level: 'debug', 
-		format: ':method :url', 
-		nolog: '\\/public'
-	});
+const expressLogger = log4js.connectLogger(logger, { 
+		level: 'auto', 
+		statusRules: [
+			{ from: 200, to: 399, level: 'trace'},
+			{ from: 400, to: 499, level: 'debug'},
+			{ from: 500, to: 599, level: 'warn'}
+		],
+		format: ':status :method :url',
+		nolog: '\\/public' 
+});
+require('#utilities/database.js');
 
-//controllers 
-require('#controllers/database.js'); // opens up connection to db
+//Controllers 
 const { requireLogin, requireGuest } = require('#controllers/account.js');
 
 // Routers
-const register = require('#routers/register.js');
-const login = require('#routers/login.js');
-const account = require('#routers/account.js');
+const register = require('#routes/register.js');
+const login = require('#routes/login.js');
+const account = require('#routes/account.js');
 
 process.on('error', (error) => logger.error(error));
 
 server
-	//settings
+	// Logger
 	.use(expressLogger)
+	
+	//Middleware
+	.use(bodyParser.urlencoded({ extended: true}))
 	.use(session({
 		resave: false, // checked session docs, false is best option(for now)
 		saveUninitialized: true,
 		secret: process.env.SESSION_SECRET
 	}))
-	.use('/public', express.static('./public'))
-	.use(bodyParser.urlencoded({ extended: true}))
-	.use(setLocalDefaults)
 	.set('view engine', 'ejs')
 	.set('views', './src/views')
-
-	// routes
+	.use(setLocalDefaults)
+	
+	// Routes
 	.get('/', (req, res) => res.render('other/home.ejs'))
+	.use('/public', express.static('./public'))
 	.use('/register', requireGuest, register)
 	.use('/login', requireGuest, login)
 	.use('/account', requireLogin, account)
 
-	// error/not found
-	.use((req, res) => res.status(404).render('other/notfound.ejs'))
-	.use((err, req, res) => res.status(500).render('other/error.ejs'))
+	// Error handling
+	/* eslint-disable no-unused-vars */
+	.use((req, res, next) => res.status(404).render('other/notfound.ejs'))
+	.use((err, req, res, next) => res.status(500).render('other/error.ejs'))
+	/* eslint-enable no-unused-vars */
+	
+	// Enable server
 	.listen(process.env.PORT || 8000);
 
 
@@ -68,4 +77,3 @@ function setLocalDefaults(req, res, next){
 
 	next();
 }
-

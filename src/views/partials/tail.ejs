@@ -3,3 +3,10 @@
 		<%- include('../partials/notification.ejs') %>
 	<% } %>
 </footer>
+<script>
+	if('serviceWorker' in navigator){
+		navigator.serviceWorker.register('/public/scripts/service-worker.js')
+			.then((registration) => console.log('service worker registered', registration))
+			.catch((error) => console.log('service worker not registered', error))
+	}
+</script>

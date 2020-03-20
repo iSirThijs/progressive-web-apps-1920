@@ -4,10 +4,15 @@
   "description": "Find your perfect player2 with this app! ",
   "main": "src/server.js",
   "scripts": {
-    "prestart": "link-module-alias",
+    "link-lint": "node_modules/.bin/link-module-alias && npm run lint",
+    "unlink": "node_modules/.bin/link-module-alias clean",
+    "prestart": "node_modules/.bin/link-module-alias",
     "start": "node src/server.js",
-    "predebug": "link-module-alias",
-    "debug": "nodemon src/server.js"
+    "predev": "npm run link-lint",
+    "dev": "nodemon src/server.js",
+    "lint:src": "node_modules/.bin/eslint --fix src/**/*.js",
+    "lint:public": "node_modules/.bin/eslint --fix public/scripts/*.js ",
+    "lint": "npm run lint:src && npm run lint:public"
   },
   "repository": {
     "type": "git",
@@ -31,10 +36,11 @@
     "mongoose": "^5.9.3"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.2"
   },
   "_moduleAliases": {
-    "#routers": "src/routers",
+    "#routes": "src/routes",
     "#controllers": "src/controllers",
     "#models": "src/models",
     "#utilities": "src/utilities"
