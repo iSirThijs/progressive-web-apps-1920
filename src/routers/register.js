@@ -59,7 +59,7 @@ function registerNewUser(req, res) {
 		.then((user) => {
 			const { _id, firstName, lastName, username, email } = user;
 			req.session.user = { _id, firstName, lastName, username, email };
-			res.redirect('/');
+			res.redirect('/profile');
 		})
 		.catch(() => {
 			res.locals.notification = {type: 'error'};

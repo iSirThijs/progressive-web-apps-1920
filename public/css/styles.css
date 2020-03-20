@@ -24,6 +24,18 @@ body {
 
 	/* resets user-agents stylesheet */
 	margin: 0;
+
+
+}
+
+@supports(padding: max(0px)) {
+	body {
+		padding-left: max(0, env(safe-area-inset-left));
+        padding-right: max(0, env(safe-area-inset-right));
+    }
+    header {
+		padding-top: env(safe-area-inset-top);
+	}
 }
 
 main {
@@ -333,8 +345,8 @@ section > img {
 }
 
 /* Icons and Background images */
-.icon-trash { background-image: url('/static/icons/trash.png'); }
-.icon-plus { background-image: url('/static/icons/plus.svg'); }
+.icon-trash { background-image: url('/public/icons/trash.png'); }
+.icon-plus { background-image: url('/public/icons/plus.svg'); }
 
 .warning,
 .error,

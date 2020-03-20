@@ -20,38 +20,12 @@ This is my assignment from the subject 'Progressive Web Apps' in the minor [Webd
 </details>
 
 # Perquisites
-* MongoDB installed
 
 # Install
-1. Clone the repository onto the computer
-2. Run `npm install`
-3. create a directory for the database & log:
-	```bash
-	mkdir data/db data/log
-	````
-4. create a env file with the secrets
-	```
-	IGDB_API_KEY= 'YOUR API KEY'
-	MONGODB='mongodb://localhost:30000/gamedate' or 'YOUR MONGODB PATH'
-	SESSION_SECRET= ' YOUR SECRET'
-	```
+
 
 # Usage
-**To start the App**
-1. Navigate to the project folders root
-2. Start the mongod child process using `npm run mongoStart`
-3. Start the server with `npm start`
-4. go to [localhost:8000](localhost:8000) to use the app.
 
-**To close the App**
-1. Close nodemon in the terminal using `ctrl-c`
-2. Don't forget to close the mongod child process:
-	```bash
-	mongo --port 3000 --shell
-	use admin
-	db.shutdown()
-	exit
-	```
 
 # License
 See [License](https://github.com/iSirThijs/progressive-web-apps-1920/blob/master/LICENSE) for more info.

@@ -12,3 +12,6 @@ function logout(req, res) {
 
 
 module.exports = router;
+
+
+// this module will handle account changes like password, email and username
