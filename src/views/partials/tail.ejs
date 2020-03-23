@@ -5,8 +5,8 @@
 </footer>
 <script>
 	if('serviceWorker' in navigator){
-		navigator.serviceWorker.register('/public/scripts/service-worker.js')
-			.then((registration) => console.log('service worker registered', registration))
+		navigator.serviceWorker.register('/public/scripts/service-worker.js', {scope: '/'})
+			.then((registration) => console.log('service worker registered'))
 			.catch((error) => console.log('service worker not registered', error))
 	}
 </script>

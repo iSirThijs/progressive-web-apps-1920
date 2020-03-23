@@ -35,7 +35,7 @@ server
 	// Logger
 	.use(expressLogger)
 	
-	//Middleware
+	// Middleware
 	.use(bodyParser.urlencoded({ extended: true}))
 	.use(session({
 		resave: false, // checked session docs, false is best option(for now)
@@ -48,13 +48,18 @@ server
 	
 	// Routes
 	.get('/', (req, res) => res.render('other/home.ejs'))
-	.use('/public', express.static('./public'))
+	.use('/public', express.static('./public', {
+		etag: false,
+		maxAge: 1000 * 60 * 60 * 24 * 365,
+		setHeaders: returnStaticFilesHeaders
+	}))
 	.use('/register', requireGuest, register)
 	.use('/login', requireGuest, login)
 	.use('/account', requireLogin, account)
-
+	
 	// Error handling
 	/* eslint-disable no-unused-vars */
+	.get('/offline', (req, res) => res.render('other/offline.ejs'))
 	.use((req, res, next) => res.status(404).render('other/notfound.ejs'))
 	.use((err, req, res, next) => res.status(500).render('other/error.ejs'))
 	/* eslint-enable no-unused-vars */
@@ -74,6 +79,14 @@ function setLocalDefaults(req, res, next){
 		logger.trace('No user logged in');
 		res.locals.user = false;
 	}
-
 	next();
+}
+
+
+
+function returnStaticFilesHeaders(res, path) {
+	let splitPath = path.split('/');
+	if(splitPath.includes('service-worker.js')) {
+		res.set('service-worker-allowed', '/');
+	}
 }
