@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/iSirThijs/progressive-web-apps-1920#readme",
   "dependencies": {
+    "apicalypse": "^0.1.6",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",

@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>
+<title>Search Games</title>
+</head>
+<body>
+	<header>
+		<%- include('../partials/header.ejs') %>
+		<h1>Games<span>search</span></h1>
+	</header>
+	<main class="fade-in">
+		<section id="search" class="user-input">
+			<form id="search-game-form" action="/games/q" method="get">
+				<input type="text" name="search" id="search" value="<%= query.search %>"">
+				<button type="submit">Search</button>
+			</form>
+		</section>
+			<section id="resultlist">
+			<%- include('./partials/game.ejs') %>
+			</section>
+	</main>
+	<%- include('../partials/tail.ejs') %>
+</body>
+</html>

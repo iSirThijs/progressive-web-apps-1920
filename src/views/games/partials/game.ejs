@@ -1,0 +1,9 @@
+<% for (var index = 0; index <games.length; index++) { %>
+	<article class="card-game">
+		<h3><%= games[index].name %></h3>
+		<img src=<%= games[index].img %>>
+		<!-- <form class="" action="/profile/games/add/<%=games[index].id %>" method="post">
+			<button class="icon-plus" type="submit" class="addIcon">Add Game</button>
+		</form> -->
+	</article>
+<% } %>

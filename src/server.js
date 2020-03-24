@@ -29,6 +29,7 @@ const register = require('#routes/register.js');
 const login = require('#routes/login.js');
 const account = require('#routes/account.js');
 const profile = require('#routes/profile.js');
+const games = require('#routes/games.js');
 
 
 // Options
@@ -74,9 +75,9 @@ server
 	.use('/public', express.static('./public', staticFilesOptions))
 	.use('/register', register)
 	.use('/login', login)
-
 	.use('/account', account)
 	.use('/profile', profile)
+	.use('/games', games)
 	
 	// Error handling
 	/* eslint-disable no-unused-vars */
