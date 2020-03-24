@@ -1,0 +1,34 @@
+<%- include('../partials/head.ejs') %>
+<title>Profile - <%= user.username %></title>
+</head>
+<body class="no-js">
+	<header>
+		<%- include('../partials/header.ejs') %>
+		<h1><%= user.username %><span>profile</span></h1>
+	</header>
+	<main class="fade-in">
+		<section>
+			<header>
+				<h2>Games<span>top 3</span></h2>
+			</header>
+			<% if(games) { %>
+				<% for (var index = 0; index <games.length; index++) { %>
+				<%- include('./partials/game.ejs') %>
+				<% } %>
+			<% } else { %>
+				<a href="/games/search" id="link-add-game">
+					<article class="card-add-game">
+						<h3>Add Game</h3>
+						<div class="card-add-game-outline"></div>
+						<div class="card-add-game-icon icon-plus"></div>
+					</article>
+				</a>
+			<% } %>
+			<footer>
+				<a href="/profile/games">See more</a>
+			</footer>
+		</section>
+	</main>
+	<%- include('../partials/tail.ejs') %>
+</body>
+</html>

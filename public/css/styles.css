@@ -173,6 +173,13 @@ section header h2 {
 	font-weight: normal;
 }
 
+h2 span {
+	font-family: var(--font-heading);
+	font-size: 80%;
+	margin-left: 5px;
+	color: var(--primary-accent);
+}
+
 section header button {
 	background: none;
 	border: none;
@@ -186,10 +193,21 @@ section p {
 	margin: 10px;
 }
 
+section > footer {
+	padding: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
 section a {
 	font-weight: bold;
 	color: var(--primary-accent);
-	text-decoration: underline;
+	text-decoration: none;
+}
+
+section footer a::after {
+	content: '>';
+	margin-left: .5em;
 }
 
 /* Section Contents */
@@ -342,6 +360,10 @@ section > img {
 	display: block;
 	overflow: hidden;
 	transition: max-height .2s ease-in-out;
+}
+
+#no-games {
+	flex-flow: column;
 }
 
 /* Icons and Background images */

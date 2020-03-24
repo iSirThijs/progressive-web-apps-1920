@@ -4,7 +4,11 @@ const logger = require('log4js').getLogger('Router - Login');
 const account = require('#controllers/account.js');
 const password = require('#utilities/password.js');
 
+const {requireGuest } = require('#controllers/account.js');
+
+
 router
+	.use(requireGuest)
 	.get('/', renderLoginPage)
 	.post('/', loginUser );
 

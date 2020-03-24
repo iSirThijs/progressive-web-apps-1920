@@ -2,10 +2,10 @@ const router = require('express').Router();
 const logger = require('log4js').getLogger('Router - Register');
 
 const account = require('#controllers/account.js');
-
 const password = require('#utilities/password.js');
 
 router
+	.use(account.requireGuest)
 	.get('/', (req, res) => res.render('other/register.ejs')) //renders the page
 	.post('/', checkExistence, checkPassword, hashPassword, registerNewUser ); // saves the account to database
 

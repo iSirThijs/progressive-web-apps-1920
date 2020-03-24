@@ -23,12 +23,12 @@ const expressLogger = log4js.connectLogger(logger, {
 require('#utilities/database.js');
 
 //Controllers 
-const { requireLogin, requireGuest } = require('#controllers/account.js');
 
 // Routers
 const register = require('#routes/register.js');
 const login = require('#routes/login.js');
 const account = require('#routes/account.js');
+const profile = require('#routes/profile.js');
 
 
 // Options
@@ -51,7 +51,7 @@ const minifyOptions = {
 };
 const staticFilesOptions =  {
 	etag: false,
-	maxAge: 1000 * 60 * 60 * 24 * 365,
+	// maxAge: 1000 * 60 * 60 * 24 * 365,
 	setHeaders: returnStaticFilesHeaders
 };
 
@@ -72,15 +72,20 @@ server
 	// Routes
 	.get('/', (req, res) => res.render('other/home.ejs'))
 	.use('/public', express.static('./public', staticFilesOptions))
-	.use('/register', requireGuest, register)
-	.use('/login', requireGuest, login)
-	.use('/account', requireLogin, account)
+	.use('/register', register)
+	.use('/login', login)
+
+	.use('/account', account)
+	.use('/profile', profile)
 	
 	// Error handling
 	/* eslint-disable no-unused-vars */
 	.get('/offline', (req, res) => res.render('other/offline.ejs'))
 	.use((req, res, next) => res.status(404).render('other/notfound.ejs'))
-	.use((err, req, res, next) => res.status(500).render('other/error.ejs'))
+	.use((err, req, res, next) => {
+		logger.warn(err);
+		res.status(500).render('other/error.ejs');
+	})
 	/* eslint-enable no-unused-vars */
 	
 	// Enable server
