@@ -1,5 +1,5 @@
 const cacheName = 'v1';
-const cacheAssets = ['/', '/offline'];
+const cacheAssets = ['/', '/offline', '/public/css/styles.css'];
 
 self.addEventListener('install', (event) => {
 	console.log('installing');
@@ -15,6 +15,11 @@ self.addEventListener('activate', () => {
 	console.log('activated');
 });
 
-self.addEventListener('fetch', () => {
-	console.log('fetch');
+self.addEventListener('fetch', (event) => {
+	event.respondWith(
+		fetch(event.request)
+			.then(res => res)
+			.catch(() => caches.match('/offline'))
+
+	);
 });
