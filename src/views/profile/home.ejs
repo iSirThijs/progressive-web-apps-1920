@@ -1,5 +1,5 @@
 <%- include('../partials/head.ejs') %>
-<title>Profile - <%= user.username %></title>
+<title>Player 2 - Profile - <%= user.username %></title>
 </head>
 <body class="no-js">
 	<header>
@@ -16,7 +16,7 @@
 				<%- include('./partials/game.ejs') %>
 				<% } %>
 			<% } else { %>
-				<a href="/games/search" id="link-add-game">
+				<a href="/games/q?" id="link-add-game">
 					<article class="card-add-game">
 						<h3>Add Game</h3>
 						<div class="card-add-game-outline"></div>

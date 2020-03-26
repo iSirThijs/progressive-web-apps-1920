@@ -3,8 +3,7 @@ const router = express.Router();
 const logger = require('log4js').getLogger('Route - Games');
 
 // Utils
-const igdb = require('#utilities/igdbapi.js');
-const transform = require('#utilities/transform.js');
+const rawg = require('#utilities/rawgapi.js');
 
 router
 	.get('/', (req, res) => res.redirect('/games/q?')) // here comes a page with trending games
@@ -19,19 +18,23 @@ router
 function searchResult(req, res) {
 	let { search } = req.query;
 
+
 	res.locals.games = [];
 	res.locals.query = req.query;
 
 	if(!search) res.render('games/search.ejs');
 	else {
-		igdb.findGames(search)
+		rawg.findGames('games', {search})
+			.then((games) => {
+				res.locals.next = games.next;
+				res.locals.prev =games.previous;
+				res.locals.games = games.results;
+				return games;
+			})
 			.then((games) => {
 				logger.trace(games);
 				return games;
 			})
-			.then((games) => transform.cards(games))
-			.then((games) => Promise.all(games))
-			.then((games) => res.locals.games = games)
 			.catch(() => res.locals.notification = { type: 'error' })
 			.finally(() => res.render('games/search.ejs'));
 	}	
@@ -43,6 +46,7 @@ function gameDetailPage(req, res) {
 	// anno-2070
 	logger.trace(req.params.id);
 
+	// own solution
 	igdb.findGameById(req.params.id)
 		.then((game) => {
 			logger.trace(game);

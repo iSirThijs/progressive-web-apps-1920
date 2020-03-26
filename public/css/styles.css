@@ -14,6 +14,10 @@
 	--bg3: rgb(47, 49, 54);
 	--line: rgb(68, 68, 68);
 }
+html {
+	min-width: 20em;
+	overflow-x: hidden;
+}
 
 /* Some resets and defaults settings */
 body {
@@ -24,6 +28,7 @@ body {
 
 	/* resets user-agents stylesheet */
 	margin: 0;
+	min-width: 20em
 
 
 }
@@ -96,7 +101,7 @@ body > header nav ul {
 
 body > header nav li {
 	font-family: var(--font-game);
-	flex: 1 0 25%;
+	flex: 1 0;
 }
 
 body > header nav a,

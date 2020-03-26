@@ -2,11 +2,13 @@
 	<ul>
 		<% if (user) { %>
 			<li><a href="/match">Match</a></li>
+			<li><a href="/games">Games</a></li>
 			<li><a href="/profile">Profile</a></li>
 			<li><a href="/account">Account</a></li>
 			<li><a href="/account/logout">Sign Out</a></li>
 		<% } else { %>
 			<li><a href="/">Home</a></li>
+			<li><a href="/games">Games</a></li>
 			<li><a href="/register">Register</a></li>
 			<li><a href="/login">Login</a></li>
 		<% } %>

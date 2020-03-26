@@ -5,13 +5,9 @@ const Game = require('#models/games.js');
 const igdb = require('#utilities/igdbapi.js');
 
 exports.cards = function(rawGamesList) {
-	if(rawGamesList.length == 0 ) return [];
+	if(rawGamesList.count == 0 ) return rawGamesList;
 	else return rawGamesList.map((game) => {
-		return igdb.coverLink(game.cover, 'cover_small')
-			.then((img) => {
-				game.img = img;
-				return game;
-			});
+		
 	});
 
 };
