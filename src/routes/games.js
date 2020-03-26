@@ -4,11 +4,12 @@ const logger = require('log4js').getLogger('Route - Games');
 
 // Utils
 const rawg = require('#utilities/rawgapi.js');
+const data = require('#utilities/data.js');
 
 router
 	.get('/', (req, res) => res.redirect('/games/q?')) // here comes a page with trending games
-	.get('/q', searchResult)
-	.get('/:id', gameDetailPage);
+	.get('/q', searchResult);
+// .get('/:id', gameDetailPage);
 // .post('/:id/delete', removeGame)
 // .delete('/delete/:id', removeGame);
 
@@ -28,11 +29,13 @@ function searchResult(req, res) {
 			.then((games) => {
 				res.locals.next = games.next;
 				res.locals.prev =games.previous;
-				res.locals.games = games.results;
-				return games;
+				return games.results;
 			})
+			.then((games) => data.checkImage(games))
+			.then((games) => data.checkParentPlatforms(games))
+			.then((games) => res.locals.games = games)
 			.then((games) => {
-				logger.trace(games);
+				// logger.trace(games);
 				return games;
 			})
 			.catch(() => res.locals.notification = { type: 'error' })
@@ -40,26 +43,26 @@ function searchResult(req, res) {
 	}	
 }
 
-function gameDetailPage(req, res) {
-	// check api for details of game
-	// 2959
-	// anno-2070
-	logger.trace(req.params.id);
+// function gameDetailPage(req, res) {
+// 	// check api for details of game
+// 	// 2959
+// 	// anno-2070
+// 	logger.trace(req.params.id);
 
-	// own solution
-	igdb.findGameById(req.params.id)
-		.then((game) => {
-			logger.trace(game);
-			return game;
-		})
-		.then((game)=> {
-			res.locals.game = game;
-			res.render('games/detailpage.ejs');
-		});
+// 	// own solution
+// 	igdb.findGameById(req.params.id)
+// 		.then((game) => {
+// 			logger.trace(game);
+// 			return game;
+// 		})
+// 		.then((game)=> {
+// 			res.locals.game = game;
+// 			res.render('games/detailpage.ejs');
+// 		});
 
 
 
-}
+// }
 
 // async function addGame(req, res) {
 // 	const userID = req.session.user.id;

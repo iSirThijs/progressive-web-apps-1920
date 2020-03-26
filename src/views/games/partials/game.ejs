@@ -1,9 +1,14 @@
-<% for (var index = 0; index <games.length; index++) { %>
+<% games.forEach((game) => { %>
 	<article class="card-game">
-		<h3><%= games[index].name %></h3>
-		<img src="<%= games[index].background_image %>">
-		<form class="" action="/profile/games/add/<%=games[index].slug %>" method="post">
+		<header>
+			<h3><%= game.name %></h3>
+			<% game.parent_platforms.forEach((parent) => { %>
+				<div class="platform <%= parent.platform.slug %>"><%= parent.platform.slug %></div>
+			<% }) %>
+		</header>
+		<div class='card-game-img' style="background-image: url(<%= game.background_image %>)"></div>
+		<form class="" action="/profile/games/add/<%=game.slug %>" method="post">
 			<button class="icon-plus" type="submit" class="addIcon">Add Game</button>
 		</form>
 	</article>
-<% } %>
+<% }) %>
