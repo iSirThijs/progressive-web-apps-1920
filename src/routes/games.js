@@ -34,10 +34,10 @@ function searchResult(req, res) {
 			.then((games) => data.checkImage(games))
 			.then((games) => data.checkParentPlatforms(games))
 			.then((games) => res.locals.games = games)
-			.then((games) => {
-				// logger.trace(games);
-				return games;
-			})
+			// .then((games) => {
+			// 	// logger.trace(games);
+			// 	return games;
+			// })
 			.catch(() => res.locals.notification = { type: 'error' })
 			.finally(() => res.render('games/search.ejs'));
 	}	

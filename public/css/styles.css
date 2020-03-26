@@ -39,16 +39,16 @@ body {
         padding-right: max(0, env(safe-area-inset-right));
     }
     header {
-		padding-top: env(safe-area-inset-top);
+		padding-top: max(0, env(safe-area-inset-top));
 	}
 }
 
 main {
-	max-width: 38rem;
+	max-width: 90rem;
 	padding: 1.5rem;
 	margin: auto;
 	display: flex;
-	flex-flow: column;
+	flex-flow: row wrap;
 	align-items: center;
 }
 
@@ -83,12 +83,14 @@ body > header {
 	background-color: var(--bg1);
 	border-bottom: 1px solid var(--alt-primary-accent);
 	width: 100%;
+	display: flex;
+	flex-flow: column;
 }
 
 body > header nav {
+	align-self: flex-end;
 	max-width: 38rem;
 	width: 100%;
-	margin: auto;
 }
 
 body > header nav ul {
@@ -124,10 +126,11 @@ body > header nav a:active {
 
 /* Street Sign */
 h1 {
+	align-self: flex-start;
 	font-family: var(--font-game);
 	background-color: var(--bg1);
-	font-size: 2.5em;
-	margin: 0 auto;
+	font-size: 1.5em;
+	margin: 0;
 	padding: 10px 10px 0;
 	width: 100%;
 	max-width: 38rem;
@@ -155,7 +158,6 @@ section {
 	display: flex;
 	flex-flow: column;
 	align-items: stretch;
-	max-width: 25rem;
 	margin: 0 0 10px;
 	border-radius: 10px;
 	background-color: var(--bg3);
@@ -164,6 +166,10 @@ section {
 
 #resultlist {
 	background-color: initial;
+	flex-flow: row wrap;
+	width: auto;
+	margin: 0 auto 10px;
+	justify-content: center;
 }
 
 section header {
@@ -292,11 +298,13 @@ section > img {
 }
 
 /* GameCard normal */
-.card-game {
+.card-game  {
+	width: 100%;
+	max-width: 320px;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
-	margin: 1em 0;
+	margin: 1em;
 	border-radius: 10px;
 	background-color: var(--bg3);
 	overflow: hidden;
