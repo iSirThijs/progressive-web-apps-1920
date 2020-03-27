@@ -1,6 +1,11 @@
 # Player2 - Progressive Web Apps rework
 Find your perfect player2 with this app! Use this app to find new friends that like the same games or use this app to date your perfect player2!
 
+> Note
+> I haven't made much progress since the last feedback, due to adjusting working at home cause of the coronavirus. At most I made the manifest.json, registerd a service worker and got everything working on iOS as well.
+
+> I don't have any specific feedback requests
+
 <!-- ![Screen1](https://github.com/iSirThijs/Player2/wiki/images/fp2home.png) -->
 
 # Features
