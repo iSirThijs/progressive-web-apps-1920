@@ -21,6 +21,9 @@ const expressLogger = log4js.connectLogger(logger, {
 	nolog: '\\/public' 
 });
 require('#utilities/database.js');
+const revManifest = require('../static/rev-manifest.json');
+
+logger.trace(revManifest);
 
 //Controllers 
 
@@ -52,7 +55,7 @@ const minifyOptions = {
 };
 const staticFilesOptions =  {
 	etag: false,
-	// maxAge: 1000 * 60 * 60 * 24 * 365,
+	maxAge: 1000 * 60 * 60 * 24 * 365,
 	setHeaders: returnStaticFilesHeaders
 };
 
@@ -72,7 +75,7 @@ server
 	
 	// Routes
 	.get('/', (req, res) => res.render('other/home.ejs'))
-	.use('/public', express.static('./public', staticFilesOptions))
+	.use('/static', express.static('./static', staticFilesOptions))
 	.use('/register', register)
 	.use('/login', login)
 	.use('/account', account)
@@ -98,6 +101,7 @@ server
 // Helper functions 
 function setLocalDefaults(req, res, next){
 	res.locals.notification = false;
+	res.locals.rev = revManifest;
 	
 	if(req.session.user) {
 		logger.trace(`User ${req.session.user.username} is logged in`);

@@ -4,15 +4,26 @@
   "description": "Find your perfect player2 with this app! ",
   "main": "src/server.js",
   "scripts": {
+    "prestart":"run-p build link-lint",
+    "start": "node src/server.js",
+    "prebuild": "rimraf ./static",
+    "build": "npm-run-all build:*",
+    "build:css": "node scripts/build-css.js",
+    "build:js": "node scripts/build-js.js",
+    "build:assets": "node scripts/build-static-files.js",
+    "build:images": "node scripts/build-static-images.js",
+    "postbuild": "node scripts/revision-hash.js && node scripts/revision-replace.js",
+    "watch": "run-p watch:*",
+    "watch:js": "chokidar 'src/assets/js/*.js' --command 'npm run build:js'",
+    "watch:css": "chokidar 'src/assets/css/*.css' --command 'npm run build:css'",
+    "watch:assets": "chokidar 'src/assets/js/*.*' --command 'npm run build:assets'",
+    "predev": "run-p build link-lint",
+    "dev": "nodemon src/server.js",
     "link-lint": "node_modules/.bin/link-module-alias && npm run lint",
     "unlink": "node_modules/.bin/link-module-alias clean",
-    "prestart": "node_modules/.bin/link-module-alias",
-    "start": "node src/server.js",
-    "predev": "npm run link-lint",
-    "dev": "nodemon src/server.js",
-    "lint:src": "node_modules/.bin/eslint --fix src/**/*.js",
-    "lint:public": "node_modules/.bin/eslint --fix public/scripts/*.js ",
-    "lint": "npm run lint:src && npm run lint:public"
+    "lint:node": "node_modules/.bin/eslint --fix src/**/*.js",
+    "lint:client": "node_modules/.bin/eslint --fix src/assets/**/*.js ",
+    "lint": "npm run lint:node && npm run lint:client"
   },
   "repository": {
     "type": "git",
@@ -35,16 +46,30 @@
     "express-session": "^1.17.0",
     "link-module-alias": "^1.2.0",
     "log4js": "^6.1.2",
-    "mongoose": "^5.9.3"
-  },
+    "mongoose": "^5.9.3",
+    "npm-run-all": "^4.1.5"
+    },
   "devDependencies": {
+    "chokidar-cli": "^2.1.0",
     "eslint": "^6.8.0",
-    "nodemon": "^2.0.2"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^6.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-css-url": "^0.1.0",
+    "gulp-rev-replace": "^0.4.4",
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2"
   },
   "_moduleAliases": {
     "#routes": "src/routes",
     "#controllers": "src/controllers",
     "#models": "src/models",
     "#utilities": "src/utilities"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/assets/*"]
   }
 }

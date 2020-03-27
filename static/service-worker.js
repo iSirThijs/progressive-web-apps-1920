@@ -10,7 +10,6 @@ self.addEventListener('install', (event) => {
 	);
 });
 
-
 self.addEventListener('activate', () => {
 	console.log('activated');
 });

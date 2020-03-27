@@ -34,7 +34,7 @@ function searchResult(req, res) {
 			.then((games) => data.checkImage(games))
 			.then((games) => data.checkParentPlatforms(games))
 			.then((games) => res.locals.games = games)
-			// .then((games) => {
+		// .then((games) => {
 			// 	// logger.trace(games);
 			// 	return games;
 			// })
