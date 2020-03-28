@@ -2,7 +2,7 @@
 section {
 	margin: .5rem auto;
 	background-color: var(--bg3);
-	padding: 10px;
+	padding: 10px 5px;
 	border-radius: 10px;
 	max-width: 30rem;
 }
@@ -22,4 +22,15 @@ section > header p {
 section p span {
 	font-style: italic;
 	color: var(--secondary-accent);
+}
+
+
+article {
+	background-color: var(--bg1);
+	padding: 10px 5px;
+	border-radius: 10px;
+	margin: .5em 0;
+	display: flex;
+	flex-flow: column;
+	overflow: hidden;
 }
