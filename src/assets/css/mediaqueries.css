@@ -1,0 +1,23 @@
+/* Notch support -> move to media query */
+main {
+	padding-left: max(10px, env(safe-area-inset-left));
+ 	padding-right: max(10px, env(safe-area-inset-right));
+}
+	
+header {
+	padding-top: max(0, env(safe-area-inset-top));
+
+}
+
+/* body header nav {
+	padding-left: max(0, env(safe-area-inset-left));
+	padding-right: max(0, env(safe-area-inset-right));
+} */
+
+/* > 480px */
+/* @media only screen and (min-width: 30em) {
+	:root {
+		--font-size-h1: 2rem;
+	}
+
+}  */

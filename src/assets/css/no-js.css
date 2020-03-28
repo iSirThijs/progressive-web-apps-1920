@@ -1,0 +1,16 @@
+.no-js #icon-menu {
+	display: none;
+}
+
+.no-js > header {
+	height: calc(2 * var(--header-height));
+}
+
+.no-js > main {
+	margin-top: calc(2 * var(--header-height) + 1em)
+}
+
+.no-js > header nav {
+	max-height: none;
+	overflow: hidden;
+}

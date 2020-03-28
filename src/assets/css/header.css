@@ -1,0 +1,92 @@
+/* Header settings */
+body > header {
+
+	/* sizing */
+	width: 100%;
+	height: var(--header-height);
+	overflow: hidden;
+
+	/* visibility */
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	/* positioning */
+	position: fixed;
+
+	/* styling */
+	background-color: var(--bg1);
+	border-bottom: 1px solid var(--alt-primary-accent);
+
+	transition: height .3s ease-in;
+
+}
+
+body > header.open {
+	height: calc(2 * var(--header-height));
+}
+
+#logo {
+	--padding: .3em;
+	padding: var(--padding);
+	display: flex;
+	font-family: var(--font-game);
+	align-items: center;
+}
+
+#logo p {
+	margin: 0;
+	font-size: var(--font-size-h1);
+}
+
+#logo img {
+	flex: 0 1 auto;
+	max-height: calc(var(--header-height) - (2 * var(--padding)));
+	margin-right: var(--padding);
+}
+
+body header > a {
+	font-size: 0;
+}
+
+body > header a,
+body > header a:visited {
+	background-position: center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	box-sizing: border-box;
+	height: var(--header-height);
+	width: 3rem;
+	display: block;
+	text-align: center;
+	transition: box-shadow .2s ease-in-out;
+}
+
+body > header a:hover,
+body > header a:active,
+body > header a.active {
+	box-shadow: 0 2px var(--secondary-accent);
+} 
+
+/* 
+/* Street Sign */
+/* header h1 {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	font-family: var(--font-game);
+	background-color: var(--bg1);
+	font-size: var(--font-size-h1);
+	padding: 0;
+	margin: 0;
+}
+
+h1 span {
+	font-family: var(--font-heading);
+	font-size: 60%;
+	margin-left: 5px;
+	color: var(--primary-accent);
+} */

@@ -1,0 +1,67 @@
+:root {
+	/* Custom properties for fonts */
+	--font-body: 'open sans', sans-serif;
+	--font-heading: 'futura-pt', sans-serif;
+	--font-game: 'lores-12', sans-serif;
+	--font-size: 16px;
+	--font-size-h1: 150%;
+
+	/* Custom properties for sizing */
+	--header-height: 4rem;
+
+	/*  Custom properties for colors */
+	--primary-accent: rgb(136, 75, 232);
+	--secondary-accent: rgb(222, 205, 29);
+	--alt-primary-accent: rgb(170, 131, 232);
+	--font-body-color: rgb(207, 207, 207);
+	--bg1: rgb(32, 34, 37);
+	--bg2: rgb(54, 57, 63);
+	--bg3: rgb(47, 49, 54);
+	--line: rgb(68, 68, 68);
+}
+
+/* Some resets and defaults settings */
+html, body {
+	/* Sets standard properties */
+	font-family: var(--font-body);
+	color: var(--font-body-color);
+	background-color: var(--bg2);
+	font-size: var(--font-size);
+
+	/* resets user-agents stylesheet */
+	margin: 0;
+	min-width: 320px;
+	max-width: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+body * {
+	box-sizing: inherit;
+}
+a {
+	color: var(--font-body-color);
+}
+
+input[type=text],
+input[type=date],
+input[type=password],
+input[type=number] {
+	color: var(--font-body-color);
+	padding: 10px;
+	background-color: var(--bg2);
+	border: dashed 1px var(--secondary-accent);
+	border-radius: 5px;
+}
+
+button {
+	font-family: var(--font-game);
+	color: var(--primary-accent);
+	font-weight: 700;
+	padding: 1em;
+	margin: 1em 0;
+	background-color: var(--secondary-accent);
+	border: none;
+	border-radius: 5px;
+}

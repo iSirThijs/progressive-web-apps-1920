@@ -13,10 +13,7 @@
     "build:assets": "node scripts/build-static-files.js",
     "build:images": "node scripts/build-static-images.js",
     "postbuild": "node scripts/revision-hash.js && node scripts/revision-replace.js",
-    "watch": "run-p watch:*",
-    "watch:js": "chokidar 'src/assets/js/*.js' --command 'npm run build:js'",
-    "watch:css": "chokidar 'src/assets/css/*.css' --command 'npm run build:css'",
-    "watch:assets": "chokidar 'src/assets/js/*.*' --command 'npm run build:assets'",
+    "watch": "chokidar 'src/assets/**/*.*' --command 'npm run build'",
     "predev": "run-p build link-lint",
     "dev": "nodemon src/server.js",
     "link-lint": "node_modules/.bin/link-module-alias && npm run lint",
@@ -70,6 +67,9 @@
     "#utilities": "src/utilities"
   },
   "nodemonConfig": {
-    "ignore": ["src/assets/*"]
+    "watch": [
+      "src",
+      "static/rev-manifest.json"
+    ]
   }
 }

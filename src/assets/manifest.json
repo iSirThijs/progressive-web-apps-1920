@@ -9,22 +9,22 @@
             "sizes": "72x72"
         },
         {
-            "src": "/static/images/logo/player2-icon-120.png",
+            "src": "/static/images/icons/logo/player2-icon-120.png",
             "type": "image/png",
             "sizes": "120x120"
         },
         {
-            "src": "/static/images/logo/player2-icon-180.png",
+            "src": "/static/images/icons/logo/player2-icon-180.png",
             "type": "image/png",
             "sizes": "180x180"
         },
         {
-            "src": "static/images/logo/player2-icon-192.png",
+            "src": "/static/images/icons/logo/player2-icon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "static/images/logo/player2-icon-512.png",
+            "src": "/static/images/icons/logo/player2-icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

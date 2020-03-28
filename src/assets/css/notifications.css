@@ -1,0 +1,22 @@
+.warning,
+.error,
+.success {
+	--notification: none;
+	--bg3: var(--bg1);
+
+	box-sizing: border-box;
+	border: 2px solid var(--notification);
+	width: 100%;
+}
+
+.warning {
+	--notification: var(--secondary-accent);
+}
+
+.error {
+	--notification: red;
+}
+
+.success {
+	--notification: green;
+}
