@@ -1,8 +1,7 @@
-<% if (notification) { %>
-	<%- include('../partials/notification.ejs') %>
-<% } %>
 <footer>
-	
+	<% if (notification) { %>
+		<%- include('../partials/notification.ejs') %>
+	<% } %>
 </footer>
 <script>
 	if('serviceWorker' in navigator){

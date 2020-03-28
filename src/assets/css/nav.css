@@ -1,14 +1,14 @@
-body > header nav {
+#menu {
 	max-height: 0;
 	overflow: hidden;
 	margin: 0 auto;
 }
 
-body > header nav.open{
+#menu.open{
 	max-height: var(--header-height);
 }
 
-body > header nav ul {
+#menu ul {
 	display: flex;
 	min-width: 100%;
 	justify-content: space-between;
@@ -18,13 +18,13 @@ body > header nav ul {
 	list-style: none;
 }
 
-body > header nav li {
+#menu li {
 	font-family: var(--font-game);
 	flex: 1 0;
 }
 
-body > header nav a,
-body > header nav a:visited {
+#menu a,
+#menu a:visited {
 	text-decoration: none;
 	box-sizing: border-box;
 	width: 100%;
@@ -37,7 +37,7 @@ body > header nav a:visited {
 	transition: box-shadow .2s ease-in-out;
 }
 
-body > header nav a:hover,
-body > header nav a:active {
+#menu a:hover,
+#menu a:active {
 	box-shadow: 0 2px var(--secondary-accent);
 }
