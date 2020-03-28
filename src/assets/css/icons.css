@@ -2,6 +2,7 @@
 .icon-trash { background-image: url('/static/images/icons/trash.png'); }
 .icon-plus { background-image: url('/static/images/icons/plus.svg'); }
 .icon-menu { background-image: url('/static/images/icons/menu.svg');}
+.icon-search { background-image: url('/static/images/icons/search.svg');}
 
 .pc {background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PScwIDAgMTYgMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTAgMTMuNzcybDYuNTQ1LjkwMlY4LjQyNkgwek0wIDcuNjJoNi41NDVWMS4yOTZMMCAyLjE5OHptNy4yNjUgNy4xNWw4LjcwNCAxLjJWOC40MjVINy4yNjV6bTAtMTMuNTd2Ni40Mmg4LjcwNFYweicgZmlsbD0nI0ZGRicvPjwvc3ZnPg==)}
 .commodore-amiga {background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…F0aCBkPSdNMTYuNDAxLjA0OGgyLjk5MUw4LjczIDE1LjkxMUg1Ljg3OHonLz48L2c+PC9zdmc+)}

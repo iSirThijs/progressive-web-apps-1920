@@ -45,3 +45,23 @@ label, label p:first-child {
 	font-size: 100%;
 	font-style: initial;
 }
+
+.search {
+	flex-flow: row;
+	align-items: stretch;
+}
+
+.search input {
+	flex: 1 1 auto;
+	margin: 0;
+	margin-right: .4rem;
+}
+
+.search button {
+	flex: 1 1 auto;
+	margin: 0;
+	max-width: 2.5rem;
+	background-position: center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+}

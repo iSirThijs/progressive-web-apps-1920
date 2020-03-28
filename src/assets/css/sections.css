@@ -4,7 +4,7 @@ section {
 	background-color: var(--bg3);
 	padding: 10px;
 	border-radius: 10px;
-	max-width: 20rem;
+	max-width: 30rem;
 }
 
 section > header {
