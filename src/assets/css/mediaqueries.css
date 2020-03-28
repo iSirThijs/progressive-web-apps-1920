@@ -6,13 +6,24 @@ main {
 	
 header {
 	padding-top: max(0, env(safe-area-inset-top));
-
+	padding-left: max(10px, env(safe-area-inset-left));
+	padding-right: max(10px, env(safe-area-inset-right));
 }
 
-/* body header nav {
-	padding-left: max(0, env(safe-area-inset-left));
-	padding-right: max(0, env(safe-area-inset-right));
-} */
+@media only screen and (min-width: 30em) {
+	#icon-menu {
+		display: none;
+	}
+	
+	body > header nav {
+		max-height: none;
+		height: var(--header-height);
+		align-self: stretch;
+		overflow: hidden;
+		margin: 0;
+	}
+}
+
 
 /* > 480px */
 /* @media only screen and (min-width: 30em) {
