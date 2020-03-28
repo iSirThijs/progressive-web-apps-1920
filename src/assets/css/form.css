@@ -1,0 +1,47 @@
+input[type=text],
+input[type=date],
+input[type=password],
+input[type=number] {
+	color: var(--font-body-color);
+	padding: 10px;
+	background-color: var(--bg2);
+	border: dashed 1px var(--secondary-accent);
+	border-radius: 5px;
+}
+
+input, select {font-size: 100%;}
+
+button {
+	font-family: var(--font-game);
+	color: var(--primary-accent);
+	font-weight: 700;
+	padding: 1em;
+	margin: 1em 0;
+	background-color: var(--secondary-accent);
+	border: none;
+	border-radius: 5px;
+}
+
+form {
+	display: flex;
+	flex-flow: column;
+}
+
+label {
+	margin-bottom: .2rem;
+}
+
+label + input {
+	margin-bottom: .6rem;
+}
+
+label p, label ul {
+	margin: .1rem 0;
+	font-size: 80%;
+	font-style: italic;
+}
+
+label, label p:first-child {
+	font-size: 100%;
+	font-style: initial;
+}

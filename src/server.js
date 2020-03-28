@@ -101,7 +101,7 @@ server
 // Helper functions 
 function setLocalDefaults(req, res, next){
 	let page = req.path.split('/');
-	res.locals.page = `/${page[1] || 'home'}`;
+	res.locals.page = page[1] || 'home';
 	res.locals.notification = false;
 	res.locals.rev = revManifest;
 	

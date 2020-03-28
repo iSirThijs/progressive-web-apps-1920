@@ -3,7 +3,7 @@ body > header {
 
 	/* sizing */
 	width: 100%;
-	height: var(--header-height);
+	max-height: var(--header-height);
 	overflow: hidden;
 
 	/* visibility */
@@ -19,12 +19,12 @@ body > header {
 	background-color: var(--bg1);
 	border-bottom: 1px solid var(--alt-primary-accent);
 
-	transition: height .3s ease-in;
+	transition: max-height .5s ease-in-out;
 
 }
 
 body > header.open {
-	height: calc(2 * var(--header-height));
+	max-height: 100%;
 }
 
 #logo {

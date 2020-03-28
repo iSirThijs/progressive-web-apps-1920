@@ -4,7 +4,8 @@
 	--font-heading: 'futura-pt', sans-serif;
 	--font-game: 'lores-12', sans-serif;
 	--font-size: 16px;
-	--font-size-h1: 150%;
+	--font-size-h1: 1.5rem;
+	--font-size-h2: 1.2rem;
 
 	/* Custom properties for sizing */
 	--header-height: 4rem;
@@ -44,24 +45,28 @@ a {
 	color: var(--font-body-color);
 }
 
-input[type=text],
-input[type=date],
-input[type=password],
-input[type=number] {
-	color: var(--font-body-color);
-	padding: 10px;
-	background-color: var(--bg2);
-	border: dashed 1px var(--secondary-accent);
-	border-radius: 5px;
+h1 {
+	font-family: var(--font-game);
+	font-size: var(--font-size-h1);
+	margin: 0;
+	width: 100%;
 }
 
-button {
-	font-family: var(--font-game);
+h1::before {
+	content: '/';
+	color: var(--alt-primary-accent);
+}
+
+h1 span {
+	font-family: var(--font-heading);
+	font-size: 50%;
+	margin-left: 5px;
 	color: var(--primary-accent);
-	font-weight: 700;
-	padding: 1em;
-	margin: 1em 0;
-	background-color: var(--secondary-accent);
-	border: none;
-	border-radius: 5px;
+}
+
+h2 {
+	font-family: var(--font-game);
+	font-size: var(--font-size-h2);
+	margin: 0;
+	width: 100%;
 }

@@ -1,3 +1,8 @@
 main {
 	margin-top: calc(var(--header-height) + 1em);
 }
+
+main > header {
+	
+	margin-bottom: 0.5rem;
+}
