@@ -4,7 +4,7 @@
   "description": "Find your perfect player2 with this app! ",
   "main": "src/server.js",
   "scripts": {
-    "prestart":"run-p build link-lint",
+    "prestart":"node_modules/.bin/link-module-alias",
     "start": "node src/server.js",
     "prebuild": "rimraf ./static",
     "build": "npm-run-all build:*",
