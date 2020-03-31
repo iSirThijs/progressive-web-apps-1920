@@ -1,6 +1,7 @@
 # Player2 - Progressive Web Apps rework <!-- omit in toc -->
 Find your perfect player2 with this app! Use this app to find new friends that like the same games or use this app to date your perfect player2!
 
+Use the demo: [player2](https://find-player-2.herokuapp.com/games)
 
 # Features <!-- omit in toc -->
 * Find games in the games tab
