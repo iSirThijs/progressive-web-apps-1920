@@ -3,6 +3,8 @@ Find your perfect player2 with this app! Use this app to find new friends that l
 
 Use the demo: [player2](https://find-player-2.herokuapp.com/games)
 
+![screen1](https://github.com/iSirThijs/progressive-web-apps-1920/blob/master/docs/screens/desktop.png?raw=true)
+
 # Features <!-- omit in toc -->
 * Find games in the games tab
 * See trending and new games
