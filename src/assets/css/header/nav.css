@@ -43,3 +43,22 @@
 #menu a:active {
 	box-shadow: 0 2px var(--secondary-accent);
 }
+
+@media only screen and (min-width: 30em) {
+	#icon-menu {
+		display: none;
+	}
+	
+	#menu {
+		max-height: none;
+		height: var(--header-height);
+		align-self: stretch;
+		overflow: hidden;
+		margin: 0;
+		width: auto;
+	}
+
+	#menu ul {
+		flex-flow: row;
+	}
+}

@@ -4,12 +4,10 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
 return gulp.src([
-  './src/assets/css/defaults.css',
-  './src/assets/css/header.css',
-  './src/assets/css/nav.css',
-  './src/assets/css/main.css',
-  './src/assets/css/sections.css',
-  './src/assets/css/notifications.css',
+  './src/assets/css/defaults/*.css',
+  './src/assets/css/header/*.css',
+  './src/assets/css/pages/*.css',
+  './src/assets/css/widgets/*.css',
   './src/assets/css/no-js.css',
   './src/assets/css/mediaqueries.css',
 	'./src/assets/css/*.css'

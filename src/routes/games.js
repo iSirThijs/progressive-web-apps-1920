@@ -8,39 +8,58 @@ const data = require('#utilities/data.js');
 
 router
 	.get('/', (req, res) => res.redirect('/games/q?')) // here comes a page with trending games
-	.get('/q', searchResult);
-// .get('/:id', gameDetailPage);
+	.get('/q', overviewPage)
+	.get('/:id', detailPage);
 // .post('/:id/delete', removeGame)
 // .delete('/delete/:id', removeGame);
 
-
-
-
-function searchResult(req, res) {
-	let { search } = req.query;
-
-
-	res.locals.games = [];
+function overviewPage(req, res) {
 	res.locals.query = req.query;
 
-	if(!search) res.render('games/search.ejs');
-	else {
-		rawg.findGames('games', {search})
-			.then((games) => {
-				res.locals.next = games.next;
-				res.locals.prev =games.previous;
-				return games.results;
-			})
-			.then((games) => data.checkImage(games))
-			.then((games) => data.checkParentPlatforms(games))
-			.then((games) => res.locals.games = games)
-		// .then((games) => {
-			// 	// logger.trace(games);
-			// 	return games;
-			// })
-			.catch(() => res.locals.notification = { type: 'error' })
-			.finally(() => res.render('games/search.ejs'));
-	}	
+	let promiseData = [];
+
+	if(Object.keys(req.query).length == 0) {
+		promiseData.push(rawg.getNewTrendingList());
+		promiseData.push(rawg.getList('genres'));
+	} 
+	else promiseData.push(rawg.getList('games', req.query));
+
+	Promise.all(promiseData)
+		.then( data => {
+			if(data.length > 1) res.locals.genres = data[1].results;
+			else res.locals.genres = [];
+
+			res.locals.next = data[0].next;
+			res.locals.prev = data[0].previous;
+
+			return data[0].results;
+		})
+		.then((games) => data.checkImage(games))
+		.then((games) => data.checkParentPlatforms(games))
+		.then((games) => {
+			res.locals.games = games;
+		})
+		.catch(() => res.locals.notification = { type: 'error' })
+		.finally(() => res.render('games/overview-page.ejs'));
+}
+
+function detailPage(req, res) {
+	let { id } = req.params;
+	let data = [
+		rawg.getGameDetails(id),
+		rawg.getScreenhosts(id)
+	];
+
+	Promise.all(data)
+		.then(([game, screens]) => {
+			res.locals.game = true;
+			Object.assign(res.locals, game);
+			res.locals.screenshots = screens;
+
+			res.render('games/detail-page.ejs');
+		});
+
+
 }
 
 // function gameDetailPage(req, res) {
@@ -60,58 +79,5 @@ function searchResult(req, res) {
 // 			res.render('games/detailpage.ejs');
 // 		});
 
-
-
-// }
-
-// async function addGame(req, res) {
-// 	const userID = req.session.user.id;
-// 	const gameID = req.params.id;
-
-// 	try {
-// 		const checkExists = await gamesUtil.findGameById(gameID);
-// 		const game = await gamesUtil.cardByID(gameID);
-
-// 		if (!checkExists) {
-// 			await gamesUtil.save(game);
-// 		}
-
-// 		await accountUtil.addGame(userID, gameID);
-
-// 		res.redirect('/profile/games');
-// 	} catch(err) {
-// 		console.log(err); //eslint-disable-line
-// 		res.locals.notification = err;
-// 		res.render('profile/gamesPage.ejs', {data: []});
-// 	}
-
-// }
-
-// async function removeGame(req, res) {
-// 	const userID = req.session.user.id;
-// 	const gameID = req.params.id;
-// 	const data = req.session.data;
-// 	const method = req.method;
-
-// 	try {
-// 		await accountUtil.removeGame(userID, gameID);
-
-// 		if (method === 'DELETE') {
-// 			res.status(204).send();
-// 		} else {
-// 			req.session.data = [];
-// 			res.redirect('/profile/games');
-// 		}
-// 	} catch(err) {
-// 		if (method === 'DELETE') {
-// 			res.status(500).json(err);
-// 		} else {
-// 			res.locals.notification = err;
-// 			res.locals.data = data;
-// 			req.session.data = [];
-// 			res.render('./profile/gamesPage.ejs');
-// 		}
-// 	}
-// }
 
 module.exports = router;

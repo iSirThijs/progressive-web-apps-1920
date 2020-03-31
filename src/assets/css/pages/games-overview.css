@@ -1,0 +1,40 @@
+#overview .filter {
+	grid-area: 3 / 1 / 4 / end;
+}
+
+#overview .tags,
+#overview .genres {
+	display: none;
+}
+
+/* min-width: 768px tablet portrait */
+@media only screen and (min-width: 48em) {
+	#overview main {
+		grid-template-rows: auto min-content min-content auto;
+	}
+}
+
+/* min-width: 960px  tablet landscape */
+@media only screen and (min-width: 60em) {
+	#overview .tags,
+	#overview .genres {
+	display: unset;
+	}
+
+	#overview section {
+		grid-column: 1 / 2;
+	}
+
+	#overview .search {
+		grid-row: 2 / 3;
+	}
+
+	#overview .filter {
+		grid-row: 3 / 4;
+	}
+
+	#overview .game-card-list {
+		grid-area: 2 / 2 / end / end;
+	}
+
+}

@@ -1,0 +1,10 @@
+<section class="genres">
+	<header>
+		<h2>Genres</h2>
+	</header>
+	<ul>
+	<% genres.forEach((genre) => { %>
+		<li><a href="/games/q?genres=<%=genre.slug%>"><%= genre.name %></a></li>			
+	<% }) %>
+	</ul>
+</section>

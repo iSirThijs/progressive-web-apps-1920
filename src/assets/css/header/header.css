@@ -46,7 +46,7 @@ body > header.open {
 	margin-right: var(--padding);
 }
 
-body header > a {
+body > header > a {
 	font-size: 0;
 }
 

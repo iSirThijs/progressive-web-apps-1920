@@ -31,6 +31,8 @@ html, body {
 
 	/* resets user-agents stylesheet */
 	margin: 0;
+
+	/* Sizing */
 	min-width: 320px;
 	max-width: 100%;
 	width: 100%;
@@ -49,12 +51,23 @@ h1 {
 	font-family: var(--font-game);
 	font-size: var(--font-size-h1);
 	margin: 0;
-	width: 100%;
+	/* width: 100%; */
 }
 
-h1::before {
+h1::before,
+a.h1prefix::before {
 	content: '/';
 	color: var(--alt-primary-accent);
+}
+
+a.h1prefix {
+	text-decoration: none;
+	font-family: var(--font-game);
+	margin: 0;
+}
+
+a.h1prefix:hover {
+	text-decoration: unset;
 }
 
 h1 span {

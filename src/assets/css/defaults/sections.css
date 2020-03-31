@@ -1,11 +1,12 @@
 /* Defines a default section */
 section {
-	/* margin: 0 auto; */
+	grid-column: 1 / end;
+	/* Sizing */
+
+	/* Styling */
 	background-color: var(--bg3);
-	padding: 10px 5px;
 	border-radius: 10px;
-	width: 100%;
-	/* max-width: 30rem; */
+	padding: 10px;
 }
 
 section > header {
@@ -19,19 +20,26 @@ section > header p {
 	color: var(--primary-accent);
 }
 
-
 section p span {
 	font-style: italic;
 	color: var(--secondary-accent);
 }
 
-
 article {
 	background-color: var(--bg1);
 	padding: 10px 5px;
 	border-radius: 10px;
-	margin: .5em 0;
 	display: flex;
 	flex-flow: column;
 	overflow: hidden;
+}
+
+/* min-width: 480px large phone */
+@media only screen and (min-width: 30em) {
+	
+}
+
+/* min-width: 768px tablet portrait */
+@media only screen and (min-width: 48em) {
+	
 }

@@ -1,0 +1,18 @@
+<% games.forEach((game) => { %>
+	<article class="card-game">
+		<a href="/games/<%=game.slug%>">
+			<header>
+				<h3><%= game.name %></h3>
+				<div class="parent-platform-bar">
+					<% game.parent_platforms.forEach((parent) => { %>
+						<div class="<%= parent.platform.slug %>"><%= parent.platform.slug %></div>
+					<% }) %>
+				</div>
+			</header>
+			<div class='card-game-img' style="background-image: url(<%= game.background_image %>)"></div>
+		</a>
+		<form class="" action="/profile/games/add/<%=game.slug %>" method="post">
+			<button class="icon-plus" type="submit" class="addIcon">Add Game</button>
+		</form>
+	</article>
+<% }) %>

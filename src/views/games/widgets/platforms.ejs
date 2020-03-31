@@ -1,0 +1,12 @@
+<section class="platforms">
+	<header>
+		<h2>Platforms</h2>
+	</header>
+	<ul>
+		<% platforms.forEach((platform) => { %>
+			<li>
+				<div class="<%= platform.platform.slug %>"><%= platform.platform.name %></div>
+			</li>
+		<% }) %>
+	</ul>
+</section>
