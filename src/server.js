@@ -55,7 +55,7 @@ const minifyOptions = {
 };
 const staticFilesOptions =  {
 	etag: false,
-	maxAge: 1000 * 60 * 60 * 24 * 365,
+	maxAge: 1000 * 60 * 60 * 24 *365,
 	setHeaders: returnStaticFilesHeaders
 };
 
@@ -100,6 +100,8 @@ server
 
 // Helper functions 
 function setLocalDefaults(req, res, next){
+	let page = req.path.split('/');
+	res.locals.page = page[1] || 'home';
 	res.locals.notification = false;
 	res.locals.rev = revManifest;
 	
@@ -119,4 +121,8 @@ function returnStaticFilesHeaders(res, path) {
 	if(splitPath.includes('service-worker.js')) {
 		res.set('service-worker-allowed', '/');
 	}
+
+	if(splitPath.includes('manifest.json')) {
+		res.set('cache-control', 'max-age=0');
+	} 
 }

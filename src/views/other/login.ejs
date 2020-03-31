@@ -2,11 +2,9 @@
 <title>Player 2 - Login</title>
 </head>
 <body class="no-js">
-	<header>
-		<%- include('../partials/header.ejs') %>
-		<h1>Account<span>login</span></h1>
-	</header>
+	<%- include('../partials/header.ejs') %>
 	<main class="fade-in">
+	<%- include('../partials/mainheader.ejs') %>
 		<% if (query) { %>
 			<section>
 				<header>
@@ -18,8 +16,8 @@
 		<section id="login" class="user-input">
 			<header>
 				<h2>Load your game</h2>
+				<p>Login to continue your quest!</p>
 			</header>
-			<p>Login to continue your quest!</p>
 			<form class="" action="/login?<%=query%>" method="post">
 				<label for="username">Username</label>
 				<input type="text" name="username" value="">
@@ -31,8 +29,8 @@
 		<section>
 			<header>
 				<h2>New Quest</h2>
+				<p>Haven't started on your quest yet?</p>
 			</header>
-			<p>Haven't started on your quest yet?</p>
 			<a class="start" href="/register">Press to start</a>
 		</section>
 	</main>

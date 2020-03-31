@@ -5,8 +5,9 @@
 </footer>
 <script>
 	if('serviceWorker' in navigator){
-		navigator.serviceWorker.register('/public/scripts/service-worker.js', {scope: '/'})
+		navigator.serviceWorker.register('/static/service-worker.js', {scope: '/'})
 			.then((registration) => console.log('service worker registered'))
 			.catch((error) => console.log('service worker not registered', error))
 	}
 </script>
+<script src="/static/<%= rev['index.js']%>"></script>

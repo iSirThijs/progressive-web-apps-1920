@@ -1,5 +1,5 @@
 const cacheName = 'v1';
-const cacheAssets = ['/', '/offline', '/public/css/styles.css'];
+const cacheAssets = ['/', '/offline', '/static/index.css', '/static/index.js'];
 
 self.addEventListener('install', (event) => {
 	console.log('installing');

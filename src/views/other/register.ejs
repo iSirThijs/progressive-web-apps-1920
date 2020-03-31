@@ -2,16 +2,14 @@
 <title>Player 2 - Register</title>
 </head>
 <body class="no-js">
-	<header>
-		<%- include('../partials/header.ejs') %>
-		<h1>Account<span>register</span></h1>
-	</header>
+	<%- include('../partials/header.ejs') %>
 	<main class="fade-in">
+		<%- include('../partials/mainheader.ejs') %>
 		<section id="register" class="user-input">
 			<header>
 				<h2>Create your character</h2>
+				<p>Tell me! Who are you?</p>
 			</header>
-			<p>Tell me! Who are you?</p>
 			<form class="" action="/register" method="post">
 				<label for="firstName">First name</label>
 				<input type="text" name="firstName" required value="">
@@ -21,7 +19,14 @@
 				<input type="text" name="username" required value="">
 				<label for="email">Email</label>
 				<input type="text" name="email" required value="">
-				<label for="password">Password</label>
+				<label for="password">
+					<p>Password</p>
+					<p>Password Requirements:</p>
+					<ul>
+						<li>Minimum 6 characters</li>
+						<li>Mixed upper and lowercase</li>
+					</ul>
+				</label>
 				<input type="password" name="password" required value="">
 				<button type="submit" name="sign-up">Sign Up</button>
 			</form>

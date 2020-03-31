@@ -1,0 +1,45 @@
+#menu {
+	max-height: 0;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#menu.open{
+	max-height: none;
+}
+
+#menu ul {
+	display: flex;
+	flex-flow: column;
+	min-width: 100%;
+	justify-content: space-between;
+	margin: 0 auto;
+	height: 100%;
+	padding: 0;
+	list-style: none;
+}
+
+#menu li {
+	font-family: var(--font-game);
+	flex: 1 0;
+}
+
+#menu a,
+#menu a:visited {
+	text-decoration: none;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding: 1em;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	transition: box-shadow .2s ease-in-out;
+}
+
+#menu a:hover,
+#menu a:active {
+	box-shadow: 0 2px var(--secondary-accent);
+}

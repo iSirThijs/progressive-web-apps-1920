@@ -1,0 +1,37 @@
+/* Defines a default section */
+section {
+	/* margin: 0 auto; */
+	background-color: var(--bg3);
+	padding: 10px 5px;
+	border-radius: 10px;
+	width: 100%;
+	/* max-width: 30rem; */
+}
+
+section > header {
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+section > header p {
+	margin: .5em 0;
+	font-style: italic;
+	color: var(--primary-accent);
+}
+
+
+section p span {
+	font-style: italic;
+	color: var(--secondary-accent);
+}
+
+
+article {
+	background-color: var(--bg1);
+	padding: 10px 5px;
+	border-radius: 10px;
+	margin: .5em 0;
+	display: flex;
+	flex-flow: column;
+	overflow: hidden;
+}

@@ -1,21 +1,39 @@
 <%- include('../partials/head.ejs') %>
 <title>Player 2 - Search Games</title>
 </head>
-<body>
-	<header>
-		<%- include('../partials/header.ejs') %>
-		<h1>Games<span>search</span></h1>
-	</header>
+<body class="no-js">
+	<%- include('../partials/header.ejs') %>
 	<main class="fade-in">
+		<%- include('../partials/mainheader.ejs') %>
 		<section id="search" class="user-input">
-			<form id="search-game-form" action="/games/q" method="get">
-				<input type="text" name="search" id="search" value="<%= query.search %>"">
-				<button type="submit">Search</button>
+			<header>
+				<h2>Search</h2>
+				<p>Look! a chicken</p>
+			</header>
+			<form class="search" action="/games/q" method="get">
+				<input type="text" name="search" id="search" placeholder="Type a game name to search" value="<%= query.search %>"">
+				<button class="icon-search" aria-label='Search' type="submit"></button>
 			</form>
 		</section>
-			<section id="resultlist">
-			<%- include('./partials/game.ejs') %>
+		<% if(games.length == 0 && !query.search) { %>
+			<section>
+				<header>
+					<h2>Tags</h2>
+					<p>Not the game though</p>
+				</header>
 			</section>
+		<% } else if (games.length == 0 && query.search) { %> 
+			<section>
+				<header>
+					<h2>No results</h2>
+					<p>Game over</p>
+				</header>
+				<p>Cannot find anything for: <span>"<%=query.search%>"</span></p>
+				<p>Try searching for something else</p>
+			</section>
+		<% } else { %> 
+			<%- include('./partials/resultlist.ejs') %>
+		<% } %>
 	</main>
 	<%- include('../partials/tail.ejs') %>
 </body>
