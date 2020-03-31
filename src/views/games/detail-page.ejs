@@ -1,0 +1,24 @@
+<%- include('../partials/head.ejs') %>
+<title>Player 2 - <%=name%></title>
+</head>
+<body id="gamedetails" class="no-js">
+	<%- include('../partials/header.ejs') %>
+	<main class="fade-in">
+		<%- include('../partials/mainheader.ejs') %>
+		<!-- screens -->
+		<%- include('./widgets/screenshots.ejs') %>
+		<%- include('./widgets/platforms.ejs') %>
+		<section id="actions">
+			<form class="" action="/profile/games/add/<%=slug %>" method="post">
+				<button class="icon-plus" type="submit" value='library' class="addIcon">Add to library</button>
+				<button class="icon-plus" type="submit" value='wishlist' class="addIcon">Add to wishlist</button>
+				<a class='button' href="#stores">Buy Game</a>
+			</form>
+		</section>
+		<%- include('./widgets/genres.ejs') %>
+		<%- include('./widgets/tags.ejs') %>
+
+	</main>
+	<%- include('../partials/tail.ejs') %>
+</body>
+</html>

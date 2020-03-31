@@ -1,0 +1,27 @@
+<%- include('../partials/head.ejs') %>
+<title>Player 2 - Search Games</title>
+</head>
+<body id='overview' class="no-js">
+	<%- include('../partials/header.ejs') %>
+	<main class="fade-in">
+		<%- include('../partials/mainheader.ejs') %>
+		<%- include('./widgets/searchform.ejs') %>
+		<% if((Object.keys(query).length == 0)) { %>
+		<%- include('./widgets/genres.ejs') %>
+		<%- include('./widgets/trendinglist.ejs') %>
+		<% } else if (games.length == 0 && query.search) { %> 
+			<section>
+				<header>
+					<h2>No results</h2>
+					<p>Game over</p>
+				</header>
+				<p>Cannot find anything for: <span>"<%=query.search%>"</span></p>
+				<p>Try searching for something else</p>
+			</section>
+		<% } else { %> 
+			<%- include('./widgets/resultlist.ejs') %>
+		<% } %>
+	</main>
+	<%- include('../partials/tail.ejs') %>
+</body>
+</html>

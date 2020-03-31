@@ -6,26 +6,43 @@ const request = axios.create({
 
 
 // Return an array of objects of 10 games containing the id, cover_id en name.
-exports.findGames = function(endpoint, params) {
+exports.getList = function(endpoint, params) {
 	const searchParams = new URLSearchParams(params);
 
 	return request.get(`/${endpoint}?${searchParams.toString()}`)
 		.then((results) => results.data)
 		.catch((error) => {
-			logger.warn(error);
-			throw new Error(error);
+			logger.warn(error.message);
+			throw error;
 		});
 };
 
-// exports.findGameById = function(id) {
-// 	return apicalypse(requestOptions)
-// 		.fields(['name', 'tags'])
-// 		.limit(1)
-// 		.where(`id=${id}`)
-// 		.request('/games')
-// 		.then((results) => results.data[0])
-// 		.catch((error) => {
-// 			logger.warn(error);
-// 			return null;
-// 		});
-// };
+
+exports.getNewTrendingList = function(){
+	return axios.get('https://rawg.io/api/games/lists/main?discover=true&ordering=-relevance&page_size=40&page=1')
+		.then((results) => results.data)
+		.catch((error) => {
+			logger.warn(error.message);
+			throw error;
+		});
+};
+
+
+exports.getGameDetails = function(id) {
+	return request.get(`/games/${id}`)
+		.then((results) => results.data)
+		.catch((error) => {
+			logger.warn(error.message);
+			throw error;
+		});
+};
+
+exports.getScreenhosts = function(id){
+	return request.get(`/games/${id}/screenshots`)
+		.then((results) => results.data.results)
+		.then((screens) => screens.map((screen) => screen.image) )
+		.catch((error) => {
+			logger.warn(error.message);
+			throw error;
+		});
+};

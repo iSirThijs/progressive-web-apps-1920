@@ -1,0 +1,62 @@
+.game-card-list {
+	background-color: unset;
+	padding: 0;
+
+	/* Display */
+	display: grid;
+	grid-template-columns: repeat(1, 100%) [end];
+	grid-template-rows: 1fr;
+	grid-auto-rows: auto;
+	grid-auto-columns: 1fr;
+	grid-auto-flow: row;
+
+	justify-content: center;
+	align-content: start;
+	gap: 10px;
+
+	justify-items: stretch;
+	align-items: stretch;
+
+}
+
+.game-card-list > header {
+	padding: 10px;
+	background-color: var(--bg3);
+	border-radius: 10px;
+	margin: 0;
+	grid-area: 1 / 1 / 2 / end;
+}
+
+.game-card-list article {
+	grid-column: 1 / end;
+}
+
+
+/* min-width: 480px large phone */
+@media only screen and (min-width: 30em) {
+	.game-card-list {
+		grid-template-columns: repeat(2, 1fr) [end];
+	}
+
+	.game-card-list article {
+		grid-column: unset
+	}
+}
+
+/* min-width: 768px tablet portrait */
+@media only screen and (min-width: 48em) {
+	.game-card-list {
+		grid-template-columns: repeat(3, 1fr) [end];
+	}
+}
+
+/* min-width: 960px  tablet landscape */
+@media only screen and (min-width: 60em) {
+	.game-card-list section {
+		grid-column: 1 / 2;
+	}
+
+	.game-card-list .search {
+		grid-row: 2 / 3;
+	}
+}

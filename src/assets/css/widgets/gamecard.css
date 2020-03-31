@@ -1,0 +1,38 @@
+.card-game {
+	padding: 0;
+	justify-content: space-between;
+}
+
+.card-game a {
+	text-decoration: none;
+	display: flex;
+	flex-flow: row wrap;
+	flex: 1 1 100%;
+}
+
+.card-game header {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+
+.card-game h3 {
+	margin: .2em 0 1em;
+	font-size: 1em;
+}
+
+.card-game a > * {
+	width: 100%;
+	order: 2;
+	padding: 0 5px;
+}
+
+div.card-game-img {
+	background-size: cover;
+	order: 1;
+	height: 7em;
+}
+
+.card-game form {
+	padding: 0 5px;
+}

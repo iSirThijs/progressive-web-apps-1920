@@ -85,9 +85,10 @@ server
 	// Error handling
 	/* eslint-disable no-unused-vars */
 	.get('/offline', (req, res) => res.render('other/offline.ejs'))
-	.use((req, res, next) => res.status(404).render('other/notfound.ejs'))
+	.use((req, res, next) => res.status(404).render('other/notfound.ejs', {page: 'not found'}))
 	.use((err, req, res, next) => {
 		logger.warn(err);
+		res.locals.page = 'Error'
 		res.status(500).render('other/error.ejs');
 	})
 	/* eslint-enable no-unused-vars */
@@ -104,6 +105,7 @@ function setLocalDefaults(req, res, next){
 	res.locals.page = page[1] || 'home';
 	res.locals.notification = false;
 	res.locals.rev = revManifest;
+	res.locals.game = undefined;
 	
 	if(req.session.user) {
 		logger.trace(`User ${req.session.user.username} is logged in`);

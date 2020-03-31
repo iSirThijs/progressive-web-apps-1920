@@ -11,15 +11,23 @@ input[type=number] {
 
 input, select {font-size: 100%;}
 
-button {
+button,
+.button {
 	font-family: var(--font-game);
 	color: var(--primary-accent);
 	font-weight: 700;
 	padding: 1em;
-	margin: 1em 0;
+	margin: .5em 0;
 	background-color: var(--secondary-accent);
 	border: none;
 	border-radius: 5px;
+}
+
+a.button {
+	text-align: center;
+	font-size: 11px;
+	text-decoration: none;
+
 }
 
 form {
@@ -47,21 +55,30 @@ label, label p:first-child {
 }
 
 .search {
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
+}
+
+.search form {
+	height: calc(1.5em + 20px);
 	flex-flow: row;
+	justify-content: space-between;
 	align-items: stretch;
 }
 
 .search input {
 	flex: 1 1 auto;
 	margin: 0;
-	margin-right: .4rem;
+	min-width: 0;
 }
 
 .search button {
-	flex: 1 1 auto;
 	margin: 0;
-	max-width: 2.5rem;
+	margin-left: .5em;
+	flex: 0 0 4em;
+	height: 4em;
 	background-position: center;
-	background-size: 50%;
 	background-repeat: no-repeat;
+	background-size: 60%;
 }
